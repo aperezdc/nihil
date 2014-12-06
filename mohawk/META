@@ -1,0 +1,19 @@
+Package: mohawk
+Version: 0.0.1
+Description: My Own HTTP Asyncio Web Kit
+URL: https://github.com/aperezdc/mohawk
+License: GPLv3
+Authors:
+	Adrián Pérez de Castro <aperez@igalia.com>
+Requirements:
+	six>=1.8.0
+	trololio>=1.0
+Classifiers:
+	Development Status :: 3 - Alpha
+	Intended Audience :: Developers
+	Natural Language :: English
+	License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+	Programming Language :: Python :: 2.7
+	Programming Language :: Python :: 3.4
+	Programming Language :: Python
+	Operating System :: OS Independent
