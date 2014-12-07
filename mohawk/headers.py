@@ -80,6 +80,9 @@ class ContentType(_StringHeader):
     name = "Content-Type"
     single_value = True
 
+ContentType.TEXT_PLAIN = ContentType("text/plain")
+ContentType.TEXT_HTML = ContentType("text/html")
+
 
 class ContentLength(_NumericHeader):
     name = "Content-Length"
