@@ -8,6 +8,8 @@ Authors:
 Requirements:
 	six>=1.8.0
 	trololio>=1.0
+Test-Requirements:
+	unittest2>=0.5.1
 Classifiers:
 	Development Status :: 3 - Alpha
 	Intended Audience :: Developers
