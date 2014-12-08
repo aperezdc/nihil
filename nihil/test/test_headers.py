@@ -58,7 +58,7 @@ class TestHeaderStringRepresentations(unittest.TestCase):
     def setup_from_data(cls, data):
         for header, representation in data:
             def f(self):
-                self.assertEquals(representation, str(header))
+                self.assertEqual(representation, str(header))
             name = "test_" + header.__class__.__name__ + "_repr"
             count = 0
             while True:
@@ -73,17 +73,17 @@ TestHeaderStringRepresentations.setup_from_data(header_data)
 
 class _TestAuthenticateHeaderBase(object):
     def test_get_set_method(self):
-        self.assertEquals("Basic", self.h.method)
+        self.assertEqual("Basic", self.h.method)
         self.h.method = "Digest"
-        self.assertEquals("Digest", self.h.method)
-        self.assertEquals(self.h.name + ": Digest realm=foorealm\r\n",
+        self.assertEqual("Digest", self.h.method)
+        self.assertEqual(self.h.name + ": Digest realm=foorealm\r\n",
                 str(self.h))
 
     def test_get_set_realm(self):
-        self.assertEquals("foorealm", self.h.realm)
+        self.assertEqual("foorealm", self.h.realm)
         self.h.realm = "barbar"
-        self.assertEquals("barbar", self.h.realm)
-        self.assertEquals(self.h.name + ": Basic realm=barbar\r\n",
+        self.assertEqual("barbar", self.h.realm)
+        self.assertEqual(self.h.name + ": Basic realm=barbar\r\n",
                 str(self.h))
 
 
@@ -99,17 +99,17 @@ class TestProxyAuthenticate(unittest.TestCase, _TestAuthenticateHeaderBase):
 
 class _TestAuthorizationHeaderBase(object):
     def test_get_set_method(self):
-        self.assertEquals("Basic", self.h.method)
+        self.assertEqual("Basic", self.h.method)
         self.h.method = "Digest"
-        self.assertEquals("Digest", self.h.method)
-        self.assertEquals(self.h.name + ": Digest xyzpayload\r\n",
+        self.assertEqual("Digest", self.h.method)
+        self.assertEqual(self.h.name + ": Digest xyzpayload\r\n",
                 str(self.h))
 
     def test_get_set_payload(self):
-        self.assertEquals("xyzpayload", self.h.payload)
+        self.assertEqual("xyzpayload", self.h.payload)
         self.h.payload = "barbar"
-        self.assertEquals("barbar", self.h.payload)
-        self.assertEquals(self.h.name + ": Basic barbar\r\n",
+        self.assertEqual("barbar", self.h.payload)
+        self.assertEqual(self.h.name + ": Basic barbar\r\n",
                 str(self.h))
 
 class TestAuthorization(unittest.TestCase, _TestAuthorizationHeaderBase):
