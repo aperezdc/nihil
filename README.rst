@@ -29,4 +29,4 @@ routing system; or to use the lower level components its parts for other
 purposes.
 
 One of the mails goals is to keep the package compatible with both Python
-2.7 and 3.x, supporting both CPython and PyPy.
+2.7, 3.3, 3.4, and PyPy.
