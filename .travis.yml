@@ -9,5 +9,5 @@ install:
   - pip install coverage coveralls
   - pip install -r requirements.txt
 script:
-  - coverage run setup.py test
+  - coverage run --include='nihil/**' setup.py test
 after_success: coveralls
