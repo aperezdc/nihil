@@ -4,6 +4,18 @@ NIHIL
 The *Nothing-but-Iffy HTTP I/O Library*
 ---------------------------------------
 
+.. image:: https://readthedocs.org/projects/nihil/badge/?version=latest
+   :target: https://nihil.readthedocs.org/en/latest
+   :alt: Documentation Status
+
+.. image:: https://img.shields.io/travis/aperezdc/nihil.svg?style=flat
+   :target: https://travis-ci.org/aperezdc/nihil
+   :alt: Build Status
+
+.. image:: https://img.shields.io/coveralls/aperezdc/nihil/master.svg?style=flat
+   :target: https://coveralls.io/r/aperezdc/nihil?branch=master
+   :alt: Code Coverage
+
 NIHIL is a small package which contains utilities to make HTTP services
 using the Python ``asyncio`` framework. It provides the following facilities:
 
