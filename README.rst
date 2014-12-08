@@ -1,17 +1,18 @@
-======
-Mohawk
-======
+=====
+NIHIL
+=====
+The *Nothing-but-Iffy HTTP I/O Library*
+---------------------------------------
 
-Mohawk stads for *My Own HTTP Asyncio Web Kit*. It is a small package
-with utilities to make HTTP services using the ``asyncio`` framework.
-It provides the following facilities:
+NIHIL is a small package which contains utilities to make HTTP services
+using the Python ``asyncio`` framework. It provides the following facilities:
 
-* ``Request``, ``Response`` objects (àla WebOb, but simpler).
+* ``Request`` and ``Response`` objects (àla WebOb, but simpler).
 * HTTP protocol implementation for ``asyncio``.
 * HTTP request parser.
 * Request routing.
 
-Mohawk lends itself to be used as a small web framework, by means of the
+NIHIL lends itself to be used as a small web framework, by means of the
 routing system; or to use the lower level components its parts for other
 purposes.
 

@@ -4,7 +4,7 @@
 #
 # Copyright © 2014 Adrian Perez <aperez@igalia.com>
 #
-# Distributed under terms of the MIT license.
+# Distributed under terms of the GPLv3 license.
 
 from setuptools import setup, find_packages
 from setuptools import find_packages
@@ -12,9 +12,9 @@ from codecs import open
 from os import path
 import sys
 
-# Prefer the local version of mohawk.metadata
+# Prefer the local version of nihil.metadata
 sys.path.insert(0, path.abspath(path.dirname(__file__)))
-from mohawk.metadata import metadata
+from nihil.metadata import metadata
 
 
 def file_contents(*relpath):
@@ -38,7 +38,7 @@ if __name__ == "__main__":
         extras_require=metadata.extra_requirements,
         license=metadata.license,
         classifiers=metadata.classifiers,
-        test_suite="mohawk.test",
+        test_suite="nihil.test",
         include_package_data=True,
         entry_points={ "console_scripts": metadata.entry_points },
     )

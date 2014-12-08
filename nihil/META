@@ -1,7 +1,7 @@
-Package: mohawk
+Package: nihil
 Version: 0.0.1
-Description: My Own HTTP Asyncio Web Kit
-URL: https://github.com/aperezdc/mohawk
+Description: Nothing-but-Iffy HTTP I/O Library
+URL: https://github.com/aperezdc/nihil
 License: GPLv3
 Authors:
 	Adrián Pérez de Castro <aperez@igalia.com>

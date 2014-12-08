@@ -4,7 +4,7 @@
 #
 # Copyright © 2014 Adrian Perez <aperez@igalia.com>
 #
-# Distributed under terms of the MIT license.
+# Distributed under terms of the GPLv3 license.
 
 """
 Utilities to work with HTTP headers.
