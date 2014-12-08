@@ -14,7 +14,7 @@ from .response import Response
 from .headers import ContentType, Location
 from textwrap import dedent
 from string import Template
-from six import iteritems, PY3
+from six import iteritems, class_types, PY3
 import re
 
 if PY3:  # pragma: no cover
@@ -366,4 +366,75 @@ class HTTPFailedDependency(HTTPClientError):
 
 class HTTPPreconditionRequired(HTTPClientError):
     code = 428
+    explanation = "This request is required to be conditional"
 
+
+class HTTPTooManyRequests(HTTPClientError):
+    code = 429
+    explanation = \
+            "The client has sent too many requests in a given amount of time"
+
+
+class HTTPRequestHeaderFieldsTooLarge(HTTPClientError):
+    code = 431
+    explanation = "The request header fields were too large"
+
+
+class HTTPUnavailableForLegalReasons(HTTPClientError):
+    code = 451
+    explanation = "The resource is not available due to legal reasons"
+
+
+class HTTPServerError(HTTPError):
+    """
+    Base class for errors in the 500 range.
+    """
+    code = 500
+
+
+class HTTPInternalServerError(HTTPServerError):
+    pass
+
+
+class HTTPNotImplemented(HTTPServerError):
+    code = 501
+    # TODO: Give a good explanation in the body, using the value of
+    #       the HTTP method used by the request.
+
+
+class HTTPBadGateway(HTTPServerError):
+    code = 502
+
+
+class HTTPServiceUnavailable(HTTPServerError):
+    code = 503
+    explanation = \
+            "The server is currently unable to handle the request due\r\n" \
+            "to a temporary overloading or maintenance of the server"
+
+
+class HTTPGatewayTimeout(HTTPServerError):
+    code = 504
+    explanation = "The gateway has timed out"
+
+
+class HTTPVersionNotSupported(HTTPServerError):
+    code = 505
+    explanation = "The HTTP version is not supported"
+
+
+class HTTPInsufficientStorage(HTTPServerError):
+    code = 507
+    explanation = "There was not enough space to save the resource"
+
+
+class HTTPNetworkAuthenticationRequired(HTTPServerError):
+    code = 511
+    explanation = "Network authentication is required"
+
+
+__all__ = [name for (name, value) in list(iteritems(globals())) if
+        isinstance(value, (type, class_types))
+        and issubclass(value, HTTPException)
+        and not name.startswith("_")]
+del name, value
