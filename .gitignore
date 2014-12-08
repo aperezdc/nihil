@@ -2,3 +2,4 @@ __pycache__/
 .*.sw[op]
 *.py[co]
 .coverage
+doc/_build/
