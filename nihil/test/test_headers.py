@@ -121,3 +121,53 @@ class TestProxyAuthorization(unittest.TestCase,
         _TestAuthorizationHeaderBase):
     def setUp(self):
         self.h = H.ProxyAuthorization("Basic", "xyzpayload")
+
+
+class TestHeadersAppend(unittest.TestCase):
+    def test_header_append_header(self):
+        h = H.Accept("text/plain")
+        h += H.Accept("text/html")
+        self.assertEqual("Accept: text/plain, text/html\r\n", str(h))
+
+    def test_header_append_string(self):
+        h = H.Accept("text/plain")
+        h += "text/html"
+        self.assertEqual("Accept: text/plain, text/html\r\n", str(h))
+
+    def test_header_append_invalid_header(self):
+        h = H.Accept("text/plain")
+        with self.assertRaises(ValueError):
+            h += H.ContentLength(123)
+
+    def test_header_append_invalid_value(self):
+        h = H.Accept("text/plain")
+        with self.assertRaises(ValueError):
+            h += 123
+
+
+class TestHeadersCompare(unittest.TestCase):
+    def test_header_equals_header(self):
+        self.assertTrue(H.Accept("text/plain") == H.Accept("text/plain"))
+
+    def test_header_equals_string(self):
+        self.assertTrue(H.Accept("text/plain") == "text/plain")
+
+    def test_header_not_equals_header(self):
+        self.assertFalse(H.Accept("text/plain") == H.ContentType("text/plain"))
+
+    def test_header_not_equals_string(self):
+        self.assertFalse(H.Accept("text/plain") == "text/html")
+
+
+class TestEnumHeader(unittest.TestCase):
+    def test_header_value(self):
+        h = H.Connection("close")
+        self.assertEqual(h.string_value, "close")
+        self.assertEqual("Connection: close\r\n", str(h))
+        self.assertTrue(h == "close")
+
+    def test_header_creation_bad_enum_value(self):
+        with self.assertRaises(ValueError):
+            h = H.Connection("blergh")
+        with self.assertRaises(ValueError):
+            h = H.Connection(len(H.Connection.values))

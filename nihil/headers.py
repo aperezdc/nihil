@@ -36,13 +36,25 @@ class Header(object):
         return str(self._value)
 
     def __eq__(self, other):
-        return self.__class__ == other.__class__ \
+        if isinstance(other, string_types):
+            return self.string_value == other
+        return self.__class__ is other.__class__ \
            and self._value == other._value
 
     def __lt__(self, other):
         assert isinstance(other, Header)
         return self.name < other.name \
             or self._value < other._value
+
+    def __iadd__(self, other):
+        if isinstance(other, string_types):
+            append_value = other
+        elif isinstance(other, Header) and self.name == other.name:
+            append_value = other.string_value
+        else:
+            raise ValueError(other)
+        self._value = "{}, {}".format(self.string_value, append_value)
+        return self
 
 
 class _StringHeader(Header):
@@ -68,7 +80,8 @@ class _EnumHeader(Header):
     def __init__(self, value=0):
         if isinstance(value, string_types):
             value = self.values.index(value)
-        assert value < len(self.values)
+        if value >= len(self.values):
+            raise ValueError(value)
         super(_EnumHeader, self).__init__(value)
 
     @property
