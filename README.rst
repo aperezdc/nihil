@@ -5,7 +5,7 @@ The *Nothing-but-Iffy HTTP I/O Library*
 ---------------------------------------
 
 .. image:: https://readthedocs.org/projects/nihil/badge/?version=latest
-   :target: https://nihil.readthedocs.org/en/latest
+   :target: https://nihil.readthedocs.io/en/latest
    :alt: Documentation Status
 
 .. image:: https://img.shields.io/travis/aperezdc/nihil.svg?style=flat
